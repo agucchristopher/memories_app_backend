@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 
 import postRoutes from './routes/posts.js';
+import PostMessage from './models/postMessage.js';
 
 const app = express();
 
@@ -20,6 +21,5 @@ const PORT = process.env.PORT|| 5000;
 const client = mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => app.listen(PORT, () => console.log(`Server Running on Port: http://localhost:${PORT}`)))
   .catch((error) => console.log(`${error} did not connect`));
-  const db = client.db("memories");
-  db.collection("posts");
+  mongoose.Schema(PostMessage)
 mongoose.set('useFindAndModify', false);
